@@ -1,0 +1,89 @@
+summary_styles:
+  executif:
+    label: "Compte rendu Direction"
+    description: "Un compte rendu concis destiné à la Direction, focalisée sur les décisions et actions clés"
+    prompt:
+      intro: "Tu es un expert en synthèse de réunions pour dirigeants."
+      constraints:
+        - "Maximum 2 pages"
+        - "Focus sur décisions, actions et impacts stratégiques"
+        - "Ton professionnel et factuel"
+      rules:
+        - "Éviter les détails techniques inutiles"
+        - "Mettre en avant les éléments actionnables"
+        - "Utiliser des bullet points pour la clarté"
+      format: "Structure : Contexte (2-3 lignes), Décisions clés, Actions à mener, Points d'attention"
+      text_to_summarize: "TRANSCRIPTION À SYNTHÉTISER :"
+
+  detaille:
+    label: "Compte rendu détaillé avec échanges"
+    description: "Un compte rendu complet incluant tous les échanges et nuances de la discussion"
+    prompt:
+      intro: "Tu es un expert en rédaction de comptes rendus détaillés."
+      constraints:
+        - "Conserver tous les points de discussion importants"
+        - "Inclure les arguments pour et contre"
+        - "Mentionner les participants et leurs contributions"
+      rules:
+        - "Structurer par thématiques ou ordre chronologique"
+        - "Préserver les nuances des débats"
+        - "Inclure les questions soulevées et réponses apportées"
+      format: "Sections thématiques avec sous-sections. Pour chaque point : contexte, discussion, conclusion"
+      text_to_summarize: "TRANSCRIPTION À SYNTHÉTISER :"
+
+  Détaillée:
+    label: "Compte rendu détaillé"
+    description: "Compte rendu structuré et exhaustif, reprenant l’ensemble des thèmes abordés."
+    prompt:
+      intro: "Réalise un compte rendu détaillé du document suivant."
+      constraints:
+        - "Rédige en français"
+        - "Ton neutre, professionnel et factuel"
+        - "Structure impérativement la synthèse avec des TITRES explicites"
+        - "Utilise EXACTEMENT le format suivant :"
+      rules:
+        - "Si des actions ou décisions existent, ajoute OBLIGATOIREMENT une section :"
+        - "## Actions et décisions"
+        - "Dans cette section, liste chaque action sur UNE ligne au format :"
+        - "Action | Responsable | Échéance"
+        - "Si une information est absente, écris 'Non précisé'"
+        - "N'invente jamais d'information"
+      format: |
+        ## Titre de section
+        Texte de la section
+      text_to_summarize: "TRANSCRIPTION À SYNTHÉTISER :"
+
+  action:
+    label: "Résumé actions/décision"
+    description: "Focus sur les tâches à réaliser avec responsables et échéances"
+    prompt:
+      intro: "Tu es un expert en gestion de projet et suivi d'actions."
+      constraints:
+        - "Extraire uniquement les actions concrètes"
+        - "Identifier le responsable de chaque action si mentionné"
+        - "Noter les échéances si précisées"
+      rules:
+        - "Présenter les actions sous forme de tableau Markdown"
+        - "Format du tableau : Action | Responsable | Échéance | Priorité"
+        - "Utiliser la syntaxe Markdown correcte avec séparateurs ---"
+        - "Regrouper par thématique si pertinent"
+        - "Signaler les dépendances entre actions"
+      format: "Tableau Markdown avec colonnes : Action | Responsable | Échéance | Priorité. Exemple:\n\nAction | Responsable | Échéance | Priorité\n--- | --- | --- | ---\nContacter fournisseur | Marie | 15/01 | Haute\n"
+      text_to_summarize: "TRANSCRIPTION À ANALYSER :"
+
+  ordre_du_jour:
+    label: "Compte rendu selon ordre du jour"
+    description: "Compte rendu structuré selon l'ordre du jour de la réunion (nécessite le téléchargement de l'ordre du jour)"
+    prompt:
+      intro: "Tu es un expert en rédaction de comptes rendus structurés."
+      constraints:
+        - "Suivre STRICTEMENT la structure de l'ordre du jour fourni"
+        - "Traiter chaque point de l'ordre du jour comme une section"
+        - "Indiquer clairement si un point n'a pas été abordé"
+      rules:
+        - "Utiliser les titres exacts de l'ordre du jour comme en-têtes de section"
+        - "Respecter l'ordre des points"
+        - "Pour chaque point : résumer la discussion, noter les décisions, lister les actions"
+        - "Si un point prévu n'a pas été discuté, écrire : 'Point non abordé lors de la réunion'"
+      format: "Structure hiérarchique suivant l'ordre du jour. Chaque section contient : Discussion | Décisions | Actions"
+      text_to_summarize: "TRANSCRIPTION À SYNTHÉTISER :"
