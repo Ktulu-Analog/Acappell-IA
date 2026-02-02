@@ -3,6 +3,8 @@ Application de transcription audio avec séparation des locuteurs et génératio
 - **Mode Local** : Utilise Whisper et Ollama en local
 - **Mode API** : Utilise l'API Albert de la DiNum pour la transcription et la génération de texte
 
+**Au premier lancement, si nécessaire, l'application téléchargera le modèle Nemo (pour la séparation des locuteurs) et Whisper dans le cas d'une utilisation locale.**
+
 ## Installation
 
 ### Prérequis
@@ -29,3 +31,6 @@ Créez un fichier `.env` à la racine du projet sur le modèle de .env-exemple.
 
 ```bash
 streamlit run app.py
+```
+
+*2026 - Pierre COUGET*
